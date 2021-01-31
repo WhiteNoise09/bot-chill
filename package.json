@@ -17,6 +17,6 @@
   },
   "homepage": "https://github.com/WhiteNoise09/bot-chill#readme",
   "dependencies": {
-    "discord.js": "file:node_modules/discord.js"
+    "discord.js": "file:./node_modules/discord.js"
   }
 }
