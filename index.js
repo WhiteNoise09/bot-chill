@@ -1,10 +1,13 @@
 const Discord = require('discord.js');
+const config  = require('./config.json');
 const fs      = require('fs');
 
 const client = new Discord.Client();
-global.client = client;
-
 client.commands = new Map();
+
+global.client = client;
+global.config = config;
+global.MessageEmbed = Discord.MessageEmbed;
 
 fs.readdirSync('./events').forEach(file => {
     const event = require(`./events/${file}`);
@@ -14,4 +17,13 @@ fs.readdirSync('./events').forEach(file => {
     client.on(event.type, event.callback);
 });
 
-client.login('ODA1NTAxMjk1ODEyOTM1Njkx.YBbzig.lDdg5ElqbAWvfav1WJDyunFcZ-c');
+fs.readdirSync('./commands').forEach(file => {
+    const command = require(`./commands/${file}`);
+    
+    client.commands.set(command.name, command);
+});
+
+// pour éviter d'avoir à envoyer le token sur github et me faire engueuler par discord H24
+if(!('TOKEN' in process.env)) process.env.TOKEN = require('./local-token.json').token;
+
+client.login(process.env.TOKEN);
