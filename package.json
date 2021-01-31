@@ -1,0 +1,22 @@
+{
+  "name": "bot-chill",
+  "version": "0.0.1",
+  "description": "Un bot présent mais inutile.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/WhiteNoise09/bot-chill.git"
+  },
+  "author": "WhiteNoise09",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/WhiteNoise09/bot-chill/issues"
+  },
+  "homepage": "https://github.com/WhiteNoise09/bot-chill#readme",
+  "dependencies": {
+    "discord.js": "file:./node_modules/discord.js"
+  }
+}
