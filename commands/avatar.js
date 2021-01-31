@@ -9,10 +9,7 @@ module.exports = {
         }
     ],
     execute(interaction) {
-        console.log(interaction);
         const target = ('target' in interaction.options) ? interaction.options.target.user : interaction.member.user;
-
-        console.log(interaction.options);
 
         interaction.reply(this.getEmbed(target));
     },
