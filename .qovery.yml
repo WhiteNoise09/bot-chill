@@ -1,0 +1,11 @@
+---
+application:
+  name: "bot-chill"
+  project: "ChillBot"
+  organization: "QoveryCommunity"
+routers:
+- name: "main-bot-chill"
+  routes:
+  - application_name: "bot-chill"
+    paths:
+    - "/*"
