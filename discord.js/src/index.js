@@ -1,5 +1,5 @@
 'use strict';
-
+console.log('Heyyyy from discord.js : index.js');
 const Util = require('./util/Util');
 
 module.exports = {
