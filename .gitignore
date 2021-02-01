@@ -1,3 +1,2 @@
-node_modules/*
-!node_modules/discord.js
+node_modules
 local-token.json
