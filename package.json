@@ -15,8 +15,5 @@
   "bugs": {
     "url": "https://github.com/WhiteNoise09/bot-chill/issues"
   },
-  "homepage": "https://github.com/WhiteNoise09/bot-chill#readme",
-  "dependencies": {
-    "discord.js": "file:./node_modules/discord.js"
-  }
+  "homepage": "https://github.com/WhiteNoise09/bot-chill#readme"
 }
