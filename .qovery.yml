@@ -3,6 +3,10 @@ application:
   name: "bot-chill"
   project: "ChillBot"
   organization: "QoveryCommunity"
+databases:
+- type: mysql
+  version: 8.0
+  name: database
 routers:
 - name: "main-bot-chill"
   routes:
