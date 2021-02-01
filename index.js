@@ -1,6 +1,10 @@
-const Discord = require('./node_modules/discord.js');
 const config  = require('./config.json');
 const fs      = require('fs');
+
+fs.readdirSync('./node_modules').forEach(console.log);
+fs.readdirSync('./node_modules/discord.js').forEach(console.log);
+
+const Discord = require('./node_modules/discord.js');
 
 const client = new Discord.Client();
 client.commands = new Map();
