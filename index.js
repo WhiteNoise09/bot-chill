@@ -2,6 +2,8 @@ const Discord = require('discord.js');
 const config  = require('./config.json');
 const fs      = require('fs');
 
+console.log('heyyyy !');
+
 const client = new Discord.Client();
 client.commands = new Map();
 
@@ -15,15 +17,21 @@ fs.readdirSync('./events').forEach(file => {
     event.once ?
     client.once(event.type, event.callback) :
     client.on(event.type, event.callback);
+
+    console.log(`logged '${event.type}' event from ${file}`);
 });
 
 fs.readdirSync('./commands').forEach(file => {
     const command = require(`./commands/${file}`);
     
     client.commands.set(command.name, command);
+
+    console.log(`added '${command.name}' event from ${file}`);
 });
 
 // pour éviter d'avoir à envoyer le token sur github et me faire engueuler par discord H24
 if(!('TOKEN' in process.env)) process.env.TOKEN = require('./local-token.json').token;
 
 client.login(process.env.TOKEN);
+
+console.log('heyyyy ! ...');
