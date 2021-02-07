@@ -1,9 +1,14 @@
 module.exports = {
     type: 'interactionCreate',
     async callback(interaction) {
-        const command = client.commands.get(interaction.commandName);
+        let command = client.commands.get(interaction.commandName);
 
-        await parseOptions(interaction, command);
+        if(command.isNamespace) {
+            const op = interaction.options[0];
+            command = client.commands.find(cmd => cmd.name === interaction.commandName).options.find(sbcmd => sbcmd.name === op.name);
+            interaction.options = await parseOptions(interaction, op.options, command);
+        }
+        else interaction.options = await parseOptions(interaction, interaction.options, command);
 
         try{
             command.execute(interaction);
@@ -13,11 +18,11 @@ module.exports = {
     }
 }
 
-async function parseOptions(interaction, command) {
+async function parseOptions(interaction, options, command) {
     const newOptions = { };
 
-    for(let i = 0 ; i < interaction.options?.length ; i++) {
-        const option = interaction.options[i];
+    for(let i = 0 ; i < options?.length ; i++) {
+        const option = options[i];
         const optionType = command.options.find(o => o.name === option.name).type.toUpperCase();
 
         switch(optionType) {
@@ -35,5 +40,5 @@ async function parseOptions(interaction, command) {
         newOptions[option.name] = option.value;
     }
 
-    interaction.options = newOptions;
+    return newOptions;
 }
